@@ -1,2 +1,73 @@
-<h1>Projects#home</h1>
-<p>Find me in app/views/projects/home.html.erb</p>
+<div class="center jumbotron">
+  <h1>Welcome to the Music Project</h1>
+
+  <h2>
+    Join or create an awesome project !
+    
+  </h2>
+
+  <%= link_to "Create Project ! ", newProject_path, class: "btn btn-lg btn-primary" %>
+</div>
+<!--  Fil d'actualité projets récents -->
+
+
+<div class="row">
+    <div class="col-sm-6 table-responsive">
+        <table class="table table-bordered table-striped">
+    
+          <caption>
+              <h1> Popular Projects : </h1>
+          </caption>  
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th> Author</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+         <% allProjects = Project.all %>
+         
+         <% allProjects.reverse_each do |n|   %>
+         <% author = User.find(n[:author]) %>
+          <tr>  
+          <td><%= link_to n[:name], n %> </td>
+          <td><%= link_to author[:name], author %></td>
+          <td>  <%= n[:description] %> </td>
+          </tr>
+          <% end %>
+          </tbody>
+        </table>     
+    </div>
+    
+    <!--  Fil d'actualité projets produits -->
+       <div class="col-sm-6 table-responsive">
+        <table class="table table-bordered table-striped">
+    
+          <caption>
+              <h1> New Projects : </h1>
+          </caption>  
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Author</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+         <% allProjects = Project.all %>
+         
+         <% allProjects.reverse_each do |n|   %>
+         <% author = User.find(n[:author]) %>
+          <tr>  
+          <td><%= link_to n[:name], n %> </td>
+          <td><%= link_to author[:name], author %></td>
+          <td>  <%= n[:description] %> </td>
+          </tr>
+          <% end %>
+          </tbody>
+        </table>     
+    </div>
+    
+        
+</div>   

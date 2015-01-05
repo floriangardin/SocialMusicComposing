@@ -1,0 +1,40 @@
+<% provide(:title, @project.name) %>
+<div class="row">
+  <aside class="col-md-12">
+    <section class="project_info">
+      <h1>
+        <%= @project[:name] %>
+      </h1>
+    </section>
+    
+    
+    <section class="row">
+      <div id="loaded_data" style="display: none">
+     <%=@project[:data] %>
+     </div>
+      <div class="col-lg-8" id="mytimeline"></div>
+        
+    </section>
+    
+    <section class="row">
+    
+    <%= form_for(@project, remote: true) do |form| %>
+      <%= form.hidden_field :data %>
+      <div class="btn btn-lg action" id="save">
+        <%= form.submit "Save" %>
+      </div>
+    <% end %>
+    
+    </section>
+    <section>
+    <div class="btn btn-lg btn-primary" id="file">Add file</div>
+    </section>
+    
+    <section>
+     <%= link_to "Join the project !", joinProject_path(@project), class: "btn btn-lg btn-primary" %>
+
+    </section>
+    
+    
+  </aside>
+</div>

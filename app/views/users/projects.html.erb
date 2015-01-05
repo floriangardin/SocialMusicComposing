@@ -1,0 +1,18 @@
+<% provide(:title, "My Projects") %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        My Projects :
+      </h1>
+      <ul>
+        <% projects = ProjectUser.where(user_id: current_user[:id]).all %>
+        <% projects.reverse_each do |n| %>
+        <% project = Project.find(n[:project_id]) %>
+       
+        <li><%= link_to project[:name],project %> </li>
+        <% end %>
+      </ul>
+    </section>
+  </aside>
+</div>

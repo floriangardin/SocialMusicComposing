@@ -11,14 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141221165716) do
+ActiveRecord::Schema.define(version: 20141222013957) do
+
+  create_table "project_users", id: false, force: true do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "project_users", ["project_id"], name: "index_project_users_on_project_id"
+  add_index "project_users", ["user_id"], name: "index_project_users_on_user_id"
+
+  create_table "projects", force: true do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "name"
+    t.text     "description"
+    t.integer  "tempo"
+    t.integer  "signature"
+    t.integer  "beat"
+    t.integer  "author"
+    t.string   "data"
+  end
 
   create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
+    t.string   "name"
+    t.string   "password"
+    t.string   "email"
     t.string   "remember_digest"
   end
 

@@ -1,2 +1,27 @@
-<h1>Projects#new</h1>
-<p>Find me in app/views/projects/new.html.erb</p>
+<% provide(:title, 'New Project') %>
+<h1>Create a project : </h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@project) do |f| %>
+      
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description, class: 'form-control' %>
+
+      <%= f.label :signature, "Signature" %>
+      <%= f.select :signature, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17], class: 'form-control' %>
+
+      <%= f.label :beat, "Number of beats" %>
+       <%= f.select :signature, [1,2,4,8,16], class: 'form-control' %>
+      
+      <%= f.label :tempo, "Tempo" %>
+      <%= f.text_field :tempo, class: 'form-control' %>
+
+      <%= f.submit "Create the project", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
